@@ -4,4 +4,4 @@ an app using nuxtjs
 
 #### License
 
-mit
+mit# Ecomm
