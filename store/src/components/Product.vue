@@ -1,5 +1,5 @@
 <template>
-  <div v-if="items.data" class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-6 m-2 p-4 place-items-center">
+  <div v-if="items.data" class="mt-4 sm:grid-cols-3  grid grid-cols-1 md:grid-cols-5 gap-6 m-2 p-4 place-items-center">
     <div
       class="flex flex-col border border-neutral-200 rounded hover:shadow-lg max-w-[400px]"
       v-for="product in limitedItems"
