@@ -1,7 +1,7 @@
 import './index.css'
 
 
-import { createApp } from 'vue'
+import { createApp, reactive } from 'vue'
 import router from './router'
 import App from './App.vue'
 
@@ -15,6 +15,25 @@ import {
 } from 'frappe-ui'
 
 let app = createApp(App)
+
+let cartData = localStorage.getItem("cart")
+if (!cartData) {
+	const cartJSON = JSON.stringify({
+		items: []
+	})
+
+	localStorage.setItem("cart", cartJSON)
+	cartData = {
+		items: []
+	}
+} else {
+	cartData = JSON.parse(cartData);
+}
+
+
+const cart = reactive(cartData);
+
+app.provide("cart", cart);
 
 setConfig('resourceFetcher', frappeRequest)
 

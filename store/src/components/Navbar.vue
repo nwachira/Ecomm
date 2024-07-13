@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-gray-900 shadow-md transition-all duration-700 ease-in-out text-white sticky  top-0 z-50 " v-if="navitems.data">
+  <header class="bg-gray-900 shadow-md transition-all duration-700 ease-in-out text-white sticky  top-0 z-50 mb-4" v-if="navitems.data">
     <nav class="flex justify-between items-center px-4 py-3 relative">
       <div class="flex items-center space-x-2">
         <Button theme="blue" variant="ghost" @click="toggleMenu">
@@ -13,7 +13,7 @@
 
       <div class="flex items-center space-x-4">
         <Button  size="lg" variant="solid" class="text-white" @click="dialog1 = true">
-          <Badge size="sm">0</Badge>
+          <Badge size="sm">{{ cart.items.length }}</Badge>
           <FeatherIcon name="shopping-cart" class="h-6" />
         </Button>
 
@@ -77,30 +77,55 @@
     </ul>
   </header>
 
-  <Dialog
-    :options="{
-      title: 'Confirm',
-      message: 'Are you sure you want to confirm this action?',
-      size: 'xl',
-      actions: [
-        {
-          label: 'Confirm',
-          variant: 'solid',
-          onClick: () => {},
-        },
-      ],
-    }"
-    v-model="dialog1"
-  />
+  <Dialog :options="{
+		title: 'Your Cart',
+		size: '3xl',
+    
+		actions: [
+			{
+				label: 'Proceed to checkout',
+				variant: 'solid',
+				onClick: (close) => {
+					close();
+					router.push({
+						name: 'CheckoutPage'
+					})
+
+				}
+			}
+		]
+	}" v-model="dialog1"
+  :style="{ zIndex: 100 }"
+	>
+  <template #body-content>
+    <ul class="space-y-4 mt-4">
+      <li v-for="(item, index) in cartItems" :key="index">
+        #{{ (index + 1) }} -
+        <div class="flex items-center">
+          <img :src="item.image" alt="" class="h-10 w-10 mr-2">
+          <span>{{ item.product }}</span>
+        </div>
+        <div class="flex justify-center space-x-3">
+          <h1>Qty</h1>
+          <FormControl v-model="item.qty" type="number" placeholder="Qty" /> 
+        </div>
+        <Button @click="removeProductFromCart(index)" class="mt-2" variant="outline" theme="red">Remove</Button>
+      </li>
+    </ul>
+  </template>
+  
+  
+	</Dialog>
+ 
 </template>
 
 <script setup>
 import { TextInput } from 'frappe-ui';
 import { FeatherIcon } from 'frappe-ui';
-import { Button, Avatar, Badge, Dialog, Dropdown } from 'frappe-ui';
+import { Button, Avatar, Badge, Dialog, Dropdown, FormControl } from 'frappe-ui';
 import { useRouter } from 'vue-router';
 import { session } from '../data/session';
-import { computed, ref } from 'vue';
+import { computed, ref, inject, watch } from 'vue';
 import { createResource } from 'frappe-ui';
 
 const router = useRouter();
@@ -111,10 +136,11 @@ const login = () => {
 
 const dialog1 = ref(false);
 const open = ref(false);
-
+const cart = inject("cart");
 const toggleMenu = () => {
   open.value = !open.value;
 };
+
 
 const navitems = createResource({
   url: 'ecommerce.api.get_items',
@@ -126,4 +152,13 @@ const handleLogout = async () => {
   router.push('/'); // Redirect after logout
 };
 
+
+function removeProductFromCart(index) {
+	cart.items.splice(index, 1);
+}
+const cartItems = ref(cart.items);
+
+watch(cart.items, (newItems) => {
+  cartItems.value = newItems;
+});
 </script>
