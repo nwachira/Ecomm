@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2024-07-13 14:52:09.739652",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "subtitle",
+  "title",
+  "description",
+  "image",
+  "button_label",
+  "route",
+  "section_break_xoqf",
+  "background_color",
+  "description_class",
+  "reverse",
+  "column_break_tttq",
+  "title_class",
+  "subtitle_class",
+  "tab_break_slli",
+  "hero_section",
+  "hero"
+ ],
+ "fields": [
+  {
+   "fieldname": "subtitle",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subtitle",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "button_label",
+   "fieldtype": "Data",
+   "label": "Button label"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Route",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_xoqf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "background_color",
+   "fieldtype": "Data",
+   "label": "Background Color"
+  },
+  {
+   "fieldname": "description_class",
+   "fieldtype": "Data",
+   "label": "Description Class"
+  },
+  {
+   "fieldname": "reverse",
+   "fieldtype": "Data",
+   "label": "Reverse"
+  },
+  {
+   "fieldname": "column_break_tttq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "title_class",
+   "fieldtype": "Data",
+   "label": "Title Class"
+  },
+  {
+   "fieldname": "subtitle_class",
+   "fieldtype": "Data",
+   "label": "Subtitle Class"
+  },
+  {
+   "fieldname": "tab_break_slli",
+   "fieldtype": "Tab Break"
+  },
+  {
+   "fieldname": "hero_section",
+   "fieldtype": "Section Break",
+   "label": "Hero"
+  },
+  {
+   "fieldname": "hero",
+   "fieldtype": "Table",
+   "label": "Hero",
+   "options": "hero right"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-07-13 16:14:31.179424",
+ "modified_by": "Administrator",
+ "module": "Ecommerce",
+ "name": "Banner",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

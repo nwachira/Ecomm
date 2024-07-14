@@ -81,7 +81,7 @@
   
   // Computed property to slice the data
   const limitedItems = computed(() => {
-    return items.data ? items.data.slice(0, 6) : [];
+    return items.data ? items.data.slice(0, 15) : [];
   });
   
   function addProductToCart(item_name, image, item_code) {

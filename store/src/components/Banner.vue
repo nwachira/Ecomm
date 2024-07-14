@@ -1,12 +1,12 @@
 <template>
-    <div class="flex flex-col md:flex-row flex-wrap gap-6 max-w-[1840px] md:mr-6 md:ml-4" v-if="bannerData">
+    <div class="flex flex-col md:flex-row flex-wrap gap-6 md:max-w-[1840px] md:mr-6 md:ml-4" v-if="bannerData">
 
         <pre></pre>
       <div
         v-for="banner in bannerData"
         :key="banner.title"
         :class="[
-          'relative flex md:max-w-[906px] md:[&:not(:first-of-type)]:flex-1 md:first-of-type:w-full border ',
+          'relative flex md:max-w-[1006px] md:[&:not(:first-of-type)]:flex-1 md:first-of-type:w-full border ',
            banner.background_color,
         ]"
       >

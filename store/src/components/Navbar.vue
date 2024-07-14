@@ -54,18 +54,9 @@
       </div>
     </nav>
 
-    <div class="mx-24 p-4">
-      <TextInput
-        type="search"
-        size="lg"
-        variant="subtle"
-        placeholder="Search"
-        :disabled="false"
-        modelValue=""
-        >
-        <FeatherIcon name="search" class="h-6 w-6" />
-
-    </TextInput>
+    <div class="md:mx-24 p-4">
+      <Search/>
+      
     </div>
 
     <!-- Show Menu -->
@@ -127,6 +118,7 @@ import { useRouter } from 'vue-router';
 import { session } from '../data/session';
 import { computed, ref, inject, watch } from 'vue';
 import { createResource } from 'frappe-ui';
+import Search from '../components/Search.vue';
 
 const router = useRouter();
 
